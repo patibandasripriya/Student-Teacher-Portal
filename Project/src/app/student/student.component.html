@@ -1,1 +1,9 @@
-<p>student works!</p>
+<div *ngFor="let student of students">
+    <div class="card">
+      <h3>{{ student.name }}</h3>
+      <p>{{ student.email }}</p>
+      <p>{{ student.address }}</p>
+      <button (click)="deleteStudent(student.id)">Delete</button>
+    </div>
+  </div>
+  
