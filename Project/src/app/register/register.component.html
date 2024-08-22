@@ -1,1 +1,26 @@
-<p>register works!</p>
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <input type="text" [(ngModel)]="name" name="name" placeholder="Name">
+    
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email">
+    
+    <input type="text" [(ngModel)]="address" name="address" placeholder="Address">
+    
+    <div>
+      <label>
+        <input type="radio" [(ngModel)]="role" name="role" value="student">
+        Student
+      </label>
+      <label>
+        <input type="radio" [(ngModel)]="role" name="role" value="teacher">
+        Teacher
+      </label>
+    </div>
+    
+    <button type="submit">Register</button>
+  </form>
+  
+    
+    
+    
+    
+  
