@@ -1,9 +1,11 @@
-<div *ngFor="let student of students">
-    <div class="card">
-      <h3>{{ student.name }}</h3>
-      <p>{{ student.email }}</p>
-      <p>{{ student.address }}</p>
-      <button (click)="deleteStudent(student.id)">Delete</button>
-    </div>
+<div>
+  <input [(ngModel)]="searchQuery" placeholder="Search students..." />
+</div>
+<div *ngFor="let student of students | search: searchQuery">
+  <div class="card">
+    <h3>{{ student.name }}</h3>
+    <p>{{ student.email }}</p>
+    <p>{{ student.address }}</p>
+    <button (click)="deleteStudent(student.id)">Delete</button>
   </div>
-  
+</div>

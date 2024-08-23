@@ -1,5 +1,7 @@
+// src/app/components/student/student.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -7,6 +9,7 @@ import { DataService } from '../service/data.service';
 })
 export class StudentComponent implements OnInit {
   students: any[] = [];
+  searchQuery: string = '';
 
   constructor(private dataService: DataService) {}
 

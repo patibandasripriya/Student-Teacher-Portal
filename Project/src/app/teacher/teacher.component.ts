@@ -9,6 +9,7 @@ import { DataService } from '../service/data.service';
 })
 export class TeacherComponent implements OnInit {
   teachers: any[] = [];
+  searchQuery: string = '';
 
   constructor(private dataService: DataService) {}
 
@@ -24,5 +25,3 @@ export class TeacherComponent implements OnInit {
     this.dataService.deleteRecord(id, 'teacher').subscribe(() => this.loadTeachers());
   }
 }
-
-

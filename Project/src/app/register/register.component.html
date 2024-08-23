@@ -1,23 +1,88 @@
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-    <input type="text" [(ngModel)]="name" name="name" placeholder="Name">
-    
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Email">
-    
-    <input type="text" [(ngModel)]="address" name="address" placeholder="Address">
-    
-    <div>
-      <label>
-        <input type="radio" [(ngModel)]="role" name="role" value="student">
-        Student
-      </label>
-      <label>
-        <input type="radio" [(ngModel)]="role" name="role" value="teacher">
-        Teacher
-      </label>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="input">
+    <input type="text" name="name" placeholder="Name" formControlName="name" required>
+    <span *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="error">
+      Name is required and must be at least 3 char long.
+    </span>
+  </div>
+
+  <div class="input">
+    <input type="email" name="email" placeholder="Email" formControlName="email" required>
+    <span *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="error">
+      Valid email is required.
+    </span>
+  </div>
+
+  <div class="input">
+    <input type="text" name="address" placeholder="Address" formControlName="address" required>
+    <span *ngIf="registerForm.controls['address'].invalid && registerForm.controls['address'].touched" class="error">
+      Address is required.
+    </span>
+  </div>
+
+  <div class="input">
+    <div class="radio">
+    <label>
+      <input type="radio" name="role" value="student" formControlName="role" required>
+      Student
+    </label>
+    <label>
+      <input type="radio" name="role" value="teacher" formControlName="role" required>
+      Teacher
+    </label>
+  </div>
+    <span *ngIf="registerForm.controls['role'].invalid && registerForm.controls['role'].touched" class="error">
+      Role is required.
+    </span>
+  </div>
+
+  <button type="submit" [disabled]="!registerForm.valid">Register</button>
+</form>
+
+  
+  
+  <!-- src/app/register/register.component.html -->
+<!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="text" formControlName="name" placeholder="Name">
+    <div *ngIf="registerForm.get('name').invalid && registerForm.get('name').touched">
+      <small *ngIf="registerForm.get('name').errors.required">Name is required.</small>
+      <small *ngIf="registerForm.get('name').errors.minlength">Name must be at least 3 characters long.</small>
     </div>
-    
-    <button type="submit">Register</button>
-  </form>
+  </div>
+  
+  <div>
+    <input type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+      <small *ngIf="registerForm.get('email').errors.required">Email is required.</small>
+      <small *ngIf="registerForm.get('email').errors.email">Invalid email format.</small>
+    </div>
+  </div>
+  
+  <div>
+    <input type="text" formControlName="address" placeholder="Address">
+    <div *ngIf="registerForm.get('address').invalid && registerForm.get('address').touched">
+      <small *ngIf="registerForm.get('address').errors.required">Address is required.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>
+      <input type="radio" formControlName="role" value="student">
+      Student
+    </label>
+    <label>
+      <input type="radio" formControlName="role" value="teacher">
+      Teacher
+    </label>
+    <div *ngIf="registerForm.get('role').invalid && registerForm.get('role').touched">
+      <small *ngIf="registerForm.get('role').errors.required">Role is required.</small>
+    </div>
+  </div>
+  
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form> -->
+
   
     
     

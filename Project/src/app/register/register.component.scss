@@ -38,3 +38,24 @@ form {
     }
   }
   
+  input.ng-invalid.ng-touched{
+    border-color: red;
+  }
+
+  .error {
+    color: red;
+    display: block;
+    margin-top: 5px;
+  }
+  .input{
+    display: flex;
+    flex-direction: column;
+  }
+  .radio{
+    display: flex;
+    flex-direction: row;
+  }
+  .input span{
+    display: flex;
+    justify-content: flex-start;
+  }
